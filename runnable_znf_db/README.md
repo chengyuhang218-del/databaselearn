@@ -1,6 +1,6 @@
 # HKZRSdb Demo：可直接运行的 ZNF 数据库教学版
 
-这是根据老师的 `krab_DB-master` 项目整理出的“开箱即跑”版本。
+这是根据老师的 `krab_DB-master` 项目整理出的版本。
 
 它不依赖 Flask、SQLAlchemy、PostgreSQL 或 pandas，只使用 Python 标准库：
 
@@ -73,21 +73,10 @@ runnable_znf_db/data/znf_demo.sqlite3
 | `/home/luozhihui/...` | `runnable_znf_db/data/` | 路径改为项目内相对路径 |
 | `luozh / luozh123 / ZNFdb` | `znf_demo_user / znf_demo_pass_123 / znf_demo.sqlite3` | 改成模拟配置 |
 
-## Word 学习记录对应的真实上游流程
-
-你转成 Word 的学习记录里提到的上游流程主要是：
-
-1. 下载 SRA 数据。
-2. 使用 `fastq-dump --split-3` 把 `.sra` 转成 FASTQ。
-3. 使用人类参考基因组 `human_g1k_v37.fasta.gz`。
-4. 做 ChIP-seq peak calling，例如无 control 时使用 MACS14。
-5. 将 peak 与 repeat 区域做 overlap，得到后续入库需要的 TSV 表。
-
-这个可运行版不执行这些重计算步骤，而是用 `database.py` 里的 `SAMPLE_PEAKS` 模拟“已经完成 overlap 的结果”。这样你可以先把数据库和网页闭环跑通，再回头替换真实数据处理流程。
 
 ## 后续接真实数据
 
-如果要接老师项目的真实数据，建议按这个顺序替换：
+后续可以接真实数据，建议按这个顺序替换：
 
 1. 保留 `app.py` 的网页查询逻辑。
 2. 保留 `database.py` 的表结构。
