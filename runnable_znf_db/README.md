@@ -1,4 +1,4 @@
-# HKZRSdb Demo：可直接运行的 ZNF 数据库教学版
+# krab_DB-master：基于老师代码整理，构建可直接运行的 ZNF 数据库教程
 
 这是根据老师的 `krab_DB-master` 项目整理出的版本。
 
