@@ -1,0 +1,395 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        /* Custom Styles */
+        ul.nav-tabs {
+            width: 140px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+
+        ul.nav-tabs li {
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+
+        ul.nav-tabs li:first-child {
+            border-top: none;
+        }
+
+        ul.nav-tabs li a {
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover {
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+
+        ul.nav-tabs li:first-child a {
+            border-radius: 4px 4px 0 0;
+        }
+
+        ul.nav-tabs li:last-child a {
+            border-radius: 0 0 4px 4px;
+        }
+
+        ul.nav-tabs.affix {
+            top: 30px; /* Set the top position of pinned element */
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+
+
+                <div class="row container">
+
+
+                    <div class="col-xs-2" id="myScrollspy">
+                        <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                            <li class="active"><a href="#section-1">Basic information</a></li>
+                            <li><a href="#section-2">Motif</a></li>
+                            <li><a href="#section-3">Repeats</a></li>
+                            <li><a href="#section-4">Expression</a></li>
+                            <li><a href="#section-5">gene structure</a></li>
+                            <li><a href="#section-6">orhnologs</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-10">
+
+
+                        <p>
+                            I'm in Section 1.
+                        </p>
+
+                        <div id="section-1" class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ znf_data["znf_symbol"] }} information</h3>
+                            </div>
+                            <div class="panel-body">
+                                这是一个基本的面板
+                            </div>
+
+                            <table class="table table-borderless">
+                                <tr class="d-flex">
+                                    <td class="col-sm-2" style="border: none;">Essemble ID:</td>
+                                    <td class="col-sm-1" style="border: none;">000000000</td>
+                                    <td class="col-sm-6" style="border: none;"></td>
+                                </tr>
+                                <tr class="d-flex" style="border: none;">
+                                    <td class="col-sm-2" style="border: none;">Chip data GEO number:</td>
+                                    <td class="col-sm-1"
+                                        style="border: none;">{{ znf_data["data_no"] }}</td>
+                                    <td class="col-sm-6" style="border: none;"></td>
+
+                                </tr>
+                                <tr class="d-flex" style="border: none;">
+                                    <td class="col-sm-2" style="border: none;">Chip data set GEO number:
+                                    </td>
+                                    <td class="col-sm-1"
+                                        style="border: none;">{{ znf_data["data_source"] }}</td>
+                                    <td class="col-sm-6" style="border: none;"></td>
+                                </tr>
+                                <tr class="d-flex" style="border: none;">
+                                    <td class="col-sm-2" style="border: none;">Total peaks:</td>
+                                    <td class="col-sm-1"
+                                        style="border: none;">{{ znf_data["peaks_num"] }}</td>
+                                    <td class="col-sm-6" style="border: none;"></td>
+                                </tr>
+                                <tr class="d-flex" style="border: none;">
+                                    <td class="col-sm-2" style="border: none;">Total repeats:</td>
+                                    <td class="col-sm-1"
+                                        style="border: none;">{{ znf_data["repeats_num"] }}</td>
+                                    <td class="col-sm-6" style="border: none;"></td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
+                        <div id="section-2" class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"> Motif</h3>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <div class="panel-body">
+                                        <p> peaks: ??? </p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default"><a
+                                                    href="{{ znf_data["img_base_path"] }}/raw/matrix">download</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <img src="{{ znf_data["img_base_path"] }}/raw/logo1.png" class="img-thumbnail">
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="panel-body">
+                                        <p> peaks: ??? </p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default"><a
+                                                    href="{{ znf_data["img_base_path"] }}/none/matrix">download</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <img src="{{ znf_data["img_base_path"] }}/none/logo1.png" class="img-thumbnail">
+                                </li>
+
+                                <li class="list-group-item">
+                                    <div class="panel-body">
+                                        <p> peaks: ??? </p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default"><a
+                                                    href="{{ znf_data["img_base_path"] }}/part/matrix">download</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <img src="{{ znf_data["img_base_path"] }}/part/logo1.png" class="img-thumbnail">
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="panel-body">
+                                        <p> peaks: ??? </p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default"><a
+                                                    href="{{ znf_data["img_base_path"] }}/full/matrix">download</a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <img src="{{ znf_data["img_base_path"] }}/full/logo1.png" class="img-thumbnail">
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div id="section-3" class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"> Repeats releated
+                                    with {{ znf_data["znf_symbol"] }}</h3>
+                            </div>
+
+                            <div id="highchats_c"></div>
+
+                        </div>
+
+                        <div id="section-4" class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ znf_data["znf_symbol"] }} expressions</h3>
+
+                            </div>
+                            <div class="dropdown">
+                                    <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                                            data-toggle="dropdown">Expression condition
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation" class="dropdown-header">Cell line experiment</li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">EM</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">EM</a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">EM</a>
+                                        </li>
+                                        <li role="presentation" class="divider"></li>
+                                        <li role="presentation" class="dropdown-header">Disease condition</li>
+                                        <li role="presentation">
+                                            <a role="menuitem" tabindex="-1" href="#">EM</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <div id="highchats_d"></div>
+
+                        </div>
+
+                        <div id="section-5" class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ znf_data["znf_symbol"] }} gene structure</h3>
+                            </div>
+                            <br/>
+                            <h3>Diffirent isforms in {{ znf_data["znf_symbol"] }}</h3><br/>
+                            <div> {{ svg_code|safe }} </div>
+                            </br>
+
+                        </div>
+
+                        <div id="section-6" class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ znf_data["znf_symbol"] }} orthologs </h3>
+                            </div>
+                            <br/>
+
+                            <table
+                                    id="table"
+                                    data-toggle="table"
+                                    data-pagination="true"
+                                    data-search="true"
+                                    data-sort-stable="true"
+                                    data-query-params="queryParams"
+                                    data-url={{ url_for('api_searchorthologs') }}
+                            >
+                                <thead>
+                                <tr>
+                                    <th data-field="Scientific_name">Scientific_name</th>
+                                    <th data-field="ortholog_external_gene_name">Symbol</th>
+                                    <th data-field="ortholog">Ensembl</th>
+                                    <th data-field="homolog_perc_id">Id.</th>
+                                    <th data-field="homolog_perc_id_r1">Id_r1.</th>
+                                    <th data-field="homolog_wga_coverage">Coverage</th>
+                                    <th data-field="homolog_orthology_confidence">Confidence</th>
+                                </tr>
+                                </thead>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block javascript_f %}
+
+    <script>
+
+        var data_1 =
+        {{ hi_data|tojson|safe }}
+        var data_2 =
+        {{ cell_line|tojson|safe }}
+        //alert(data_2)
+
+
+        var chart = Highcharts.chart('highchats_c', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'the peaks overlapped with each repeat'
+            },
+            subtitle: {
+                text: 'Repeat number <a href="https://en.wikipedia.org/wiki/List_of_cities_proper_by_population">22</a>'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45 // 设置轴标签旋转角度
+                },
+                scrollbar: {
+                    enabled: true
+                },
+                min: 0,
+                max: 20
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Peaks (number)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'peaks number: <b>{point.y:.1f} </b>'
+            },
+            series: [{
+                name: "repeat",
+                data: data_1,
+
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    format: '{point.y:.1f}', // :.1f 为保留 1 位小数
+                    y: 10
+                }
+            }]
+        });
+
+
+        var chart_d = Highcharts.chart('highchats_d', {
+            title: {
+                text: 'gene expression in cell lines'
+            },
+            subtitle: {
+                text: 'data source：xxxxxx'
+            }, xAxis: {
+                categories: {{ cell_line|safe }},
+                scrollbar: {
+                    enabled: true
+                },
+                min: 0,
+                max: 20
+            },
+            yAxis: {
+                title: {
+                    text: 'TPM'
+                },
+                labels: {
+                    enabled: true
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    }
+                }
+            },
+            series: [{
+                name: 'gene expression TPM',
+                data: {{  expre|safe }}
+            }],
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+        });
+
+
+        $('select id or class or something else').change(function(){
+            $('red input field').html($(this).text());
+        });
+
+        function queryParams(params) {
+            params.ensembl = {{ znf_data["ensembl"]|tojson }}
+            return params
+        }
+
+    </script>
+
+
+
+
+{% endblock %}
